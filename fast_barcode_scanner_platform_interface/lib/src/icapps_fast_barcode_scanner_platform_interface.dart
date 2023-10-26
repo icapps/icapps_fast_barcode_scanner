@@ -1,9 +1,9 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+import 'method_channel_fast_barcode_scanner.dart';
 import 'types/barcode.dart';
 import 'types/barcode_type.dart';
 import 'types/preview_configuration.dart';
-import 'method_channel_icapps_fast_barcode_scanner.dart';
 
 /// The interface that implementations of icapps_fast_barcode_scanner must implement.
 ///

@@ -1,8 +1,8 @@
 name: icapps_fast_barcode_scanner
 description: A fast barcode scanner using MLKit on Android and AVFoundation on iOS.
 version: 1.2.0
-homepage: https://github.com/jhoogstraat/icapps_fast_barcode_scanner
-repository: https://github.com/jhoogstraat/icapps_fast_barcode_scanner
+homepage: https://github.com/icapps/icapps_fast_barcode_scanner
+repository: https://github.com/icapps/icapps_fast_barcode_scanner
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
