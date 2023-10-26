@@ -9,12 +9,18 @@ import 'types/barcode_type.dart';
 import 'types/preview_configuration.dart';
 
 class MethodChannelFastBarcodeScanner extends FastBarcodeScannerPlatform {
-  static const MethodChannel _channel = MethodChannel('com.icapps/icapps_fast_barcode_scanner');
+  static const MethodChannel _channel =
+      MethodChannel('com.icapps/icapps_fast_barcode_scanner');
 
   void Function(Barcode)? _onDetectHandler;
 
   @override
-  Future<PreviewConfiguration> init(List<BarcodeType> types, Resolution resolution, Framerate framerate, DetectionMode detectionMode, CameraPosition position) async {
+  Future<PreviewConfiguration> init(
+      List<BarcodeType> types,
+      Resolution resolution,
+      Framerate framerate,
+      DetectionMode detectionMode,
+      CameraPosition position) async {
     _channel.setMethodCallHandler((call) async {
       switch (call.method) {
         case 'read':
@@ -24,7 +30,8 @@ class MethodChannelFastBarcodeScanner extends FastBarcodeScannerPlatform {
           _onDetectHandler?.call(barcode);
           break;
         default:
-          assert(true, "FastBarcodeScanner: Unknown method call received: ${call.method}");
+          assert(true,
+              "FastBarcodeScanner: Unknown method call received: ${call.method}");
       }
     });
 
@@ -53,14 +60,19 @@ class MethodChannelFastBarcodeScanner extends FastBarcodeScannerPlatform {
   }
 
   @override
-  Future<bool> toggleTorch() => _channel.invokeMethod('toggleTorch').then<bool>((isOn) => isOn);
+  Future<bool> toggleTorch() =>
+      _channel.invokeMethod('toggleTorch').then<bool>((isOn) => isOn);
 
   @override
-  Future<bool> changeCamera(CameraPosition position) => _channel.invokeMethod('changeCamera', describeEnum(position)).then<bool>((success) => success);
+  Future<bool> changeCamera(CameraPosition position) => _channel
+      .invokeMethod('changeCamera', describeEnum(position))
+      .then<bool>((success) => success);
 
   @override
-  Future<bool> canChangeCamera() => _channel.invokeMethod('canChangeCamera').then<bool>((success) => success);
+  Future<bool> canChangeCamera() =>
+      _channel.invokeMethod('canChangeCamera').then<bool>((success) => success);
 
   @override
-  void setOnDetectHandler(void Function(Barcode) handler) => _onDetectHandler = handler;
+  void setOnDetectHandler(void Function(Barcode) handler) =>
+      _onDetectHandler = handler;
 }

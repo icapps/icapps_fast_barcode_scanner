@@ -17,7 +17,8 @@ abstract class FastBarcodeScannerPlatform extends PlatformInterface {
 
   static const Object _token = Object();
 
-  static FastBarcodeScannerPlatform _instance = MethodChannelFastBarcodeScanner();
+  static FastBarcodeScannerPlatform _instance =
+      MethodChannelFastBarcodeScanner();
 
   /// The default instance of [FastBarcodeScannerPlatform] to use.
   ///
@@ -34,7 +35,12 @@ abstract class FastBarcodeScannerPlatform extends PlatformInterface {
   /// Returns a [PreviewConfiguration] containing the parameters with
   /// which the camera is set up.
   ///
-  Future<PreviewConfiguration> init(List<BarcodeType> types, Resolution resolution, Framerate framerate, DetectionMode detectionMode, CameraPosition position) {
+  Future<PreviewConfiguration> init(
+      List<BarcodeType> types,
+      Resolution resolution,
+      Framerate framerate,
+      DetectionMode detectionMode,
+      CameraPosition position) {
     throw UnimplementedError('init() has not been implemented');
   }
 

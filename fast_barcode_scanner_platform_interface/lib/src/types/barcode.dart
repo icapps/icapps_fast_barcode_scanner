@@ -17,7 +17,8 @@ class Barcode {
   final String value;
 
   @override
-  bool operator ==(Object other) => other is Barcode && other.type == type && other.value == value;
+  bool operator ==(Object other) =>
+      other is Barcode && other.type == type && other.value == value;
   @override
   int get hashCode => super.hashCode ^ type.hashCode ^ value.hashCode;
 }
