@@ -6,6 +6,7 @@ repository: https://github.com/icapps/icapps_fast_barcode_scanner
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
