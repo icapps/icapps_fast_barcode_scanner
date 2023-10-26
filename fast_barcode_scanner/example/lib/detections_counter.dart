@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:fast_barcode_scanner_example/scanner_screen.dart';
+
 import 'package:flutter/material.dart';
+import 'package:icapps_fast_barcode_scanner_example/scanner_screen.dart';
 
 class DetectionsCounter extends StatefulWidget {
   const DetectionsCounter({Key? key}) : super(key: key);

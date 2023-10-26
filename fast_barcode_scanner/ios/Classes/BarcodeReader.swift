@@ -1,6 +1,6 @@
 //
 //  BarcodeReader.swift
-//  fast_barcode_scanner
+//  icapps_fast_barcode_scanner
 //
 //  Created by Joshua Hoogstraat on 16.07.20.
 //

@@ -1,3 +1,3 @@
-# fast_barcode_scanner_example
+# icapps_fast_barcode_scanner_example
 
-Demonstrates how to use the fast_barcode_scanner plugin.
+Demonstrates how to use the icapps_fast_barcode_scanner plugin.

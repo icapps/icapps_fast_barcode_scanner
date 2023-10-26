@@ -3,11 +3,11 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'types/barcode.dart';
 import 'types/barcode_type.dart';
 import 'types/preview_configuration.dart';
-import 'method_channel_fast_barcode_scanner.dart';
+import 'method_channel_icapps_fast_barcode_scanner.dart';
 
-/// The interface that implementations of fast_barcode_scanner must implement.
+/// The interface that implementations of icapps_fast_barcode_scanner must implement.
 ///
-/// Platform implementations should extend this class rather than implement it as `fast_barcode_scanner`
+/// Platform implementations should extend this class rather than implement it as `icapps_fast_barcode_scanner`
 /// does not consider newly added methods to be breaking changes. Extending this class
 /// (using `extends`) ensures that the subclass will get the default implementation, while
 /// platform implementations that `implements` this interface will be broken by newly added
@@ -17,8 +17,7 @@ abstract class FastBarcodeScannerPlatform extends PlatformInterface {
 
   static const Object _token = Object();
 
-  static FastBarcodeScannerPlatform _instance =
-      MethodChannelFastBarcodeScanner();
+  static FastBarcodeScannerPlatform _instance = MethodChannelFastBarcodeScanner();
 
   /// The default instance of [FastBarcodeScannerPlatform] to use.
   ///
@@ -35,12 +34,7 @@ abstract class FastBarcodeScannerPlatform extends PlatformInterface {
   /// Returns a [PreviewConfiguration] containing the parameters with
   /// which the camera is set up.
   ///
-  Future<PreviewConfiguration> init(
-      List<BarcodeType> types,
-      Resolution resolution,
-      Framerate framerate,
-      DetectionMode detectionMode,
-      CameraPosition position) {
+  Future<PreviewConfiguration> init(List<BarcodeType> types, Resolution resolution, Framerate framerate, DetectionMode detectionMode, CameraPosition position) {
     throw UnimplementedError('init() has not been implemented');
   }
 

@@ -1,18 +1,22 @@
-# Flutter Barcode Scanner Plugin
+# icapps Fast Barcode Scanner Plugin
+
+# Notice
+
+This is a fork of the [fast_barcode_scanner](https://pub.dev/packages/fast_barcode_scanner) package. It adds camera switching which is something we need. If this gets merged with the source we will deprecated this package and forward to the original package.
 
 ## Packages
 
-### fast_barcode_scanner:
+### icapps_fast_barcode_scanner:
 code for the cross-platform facing plugin, used to display a camera view within Flutter applications
 
-[![pub package](https://img.shields.io/pub/v/fast_barcode_scanner.svg)](https://pub.dartlang.org/packages/fast_barcode_scanner)
+[![pub package](https://img.shields.io/pub/v/icapps_fast_barcode_scanner.svg)](https://pub.dartlang.org/packages/icapps_fast_barcode_scanner)
 
-### fast_barcode_scanner_platform_interface:
+### icapps_fast_barcode_scanner_platform_interface:
 code for the common platform interface
 
-[![pub package](https://img.shields.io/pub/v/fast_barcode_scanner_platform_interface.svg)](https://pub.dartlang.org/packages/fast_barcode_scanner_platform_interface)
+[![pub package](https://img.shields.io/pub/v/icapps_fast_barcode_scanner_platform_interface.svg)](https://pub.dartlang.org/packages/icapps_fast_barcode_scanner_platform_interface)
 
-Most developers are likely here as they are looking to use the fast_barcode_scanner plugin. There is a readme file within each directory with more information.
+Most developers are likely here as they are looking to use the icapps_fast_barcode_scanner plugin. There is a readme file within each directory with more information.
 
 
 ## Issues

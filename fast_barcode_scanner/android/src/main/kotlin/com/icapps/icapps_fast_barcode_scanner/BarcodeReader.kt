@@ -1,4 +1,4 @@
-package com.jhoogstraat.fast_barcode_scanner
+package com.icapps.icapps_fast_barcode_scanner
 
 import android.Manifest
 import android.app.Activity
@@ -229,7 +229,7 @@ class BarcodeReader(private val flutterTextureEntry: TextureRegistry.SurfaceText
     }
 
     companion object {
-        private const val TAG = "fast_barcode_scanner"
+        private const val TAG = "icapps_fast_barcode_scanner"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
     }

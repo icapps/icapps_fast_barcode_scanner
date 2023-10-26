@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import '../../fast_barcode_scanner_platform_interface.dart';
+import '../../icapps_fast_barcode_scanner_platform_interface.dart';
 
 /// Describes a Barcode with type and value.
 /// [Barcode] are equatable.
@@ -17,8 +17,7 @@ class Barcode {
   final String value;
 
   @override
-  bool operator ==(Object other) =>
-      other is Barcode && other.type == type && other.value == value;
+  bool operator ==(Object other) => other is Barcode && other.type == type && other.value == value;
   @override
   int get hashCode => super.hashCode ^ type.hashCode ^ value.hashCode;
 }

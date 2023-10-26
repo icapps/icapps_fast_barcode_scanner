@@ -1,4 +1,4 @@
-package com.jhoogstraat.fast_barcode_scanner
+package com.icapps.icapps_fast_barcode_scanner
 
 import android.util.Size
 import com.google.mlkit.vision.barcode.Barcode

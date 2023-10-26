@@ -1,17 +1,19 @@
-# fast_barcode_scanner
+# Notice
 
-[![pub package](https://img.shields.io/pub/v/fast_barcode_scanner)](https://pub.dev/packages/fast_barcode_scanner)
+This is a fork of the [fast_barcode_scanner](https://pub.dev/packages/fast_barcode_scanner) package. It adds camera switching which is something we need. If this gets merged with the source we will deprecated this package and forward to the original package.
+
+# icapps Fast Barcode Scanner Plugin
+
+[![pub package](https://img.shields.io/pub/v/icapps_fast_barcode_scanner)](https://pub.dev/packages/icapps_fast_barcode_scanner)
 
 A fast barcode scanner using **MLKit** (and **CameraX**) on Android and **AVFoundation** on iOS. This package leaves the UI up to the user, but rather gives an access to a camera preview.
-
-*Note*: This plugin is still under development, and some APIs might not be available yet. If you have any issues, ideas or recommendendations, don't hesitate to create an issue or pull request on github. I am using this plugin in production myself and will actively develop and maintain it going forward.
 
 **This plugin required iOS 10.0 and Android sdk version 21 or higher.**
 
 ## Installation
 Add the following line to your **pubspec.yaml**:
 ```yaml
-fast_barcode_scanner: ^1.1.0
+icapps_fast_barcode_scanner: latest_version
 ```
 ### iOS
 Add the `NSCameraUsageDescription` key to your `ios/Runner/Info.plist`, like so:
@@ -30,7 +32,7 @@ minSdkVersion 21
 The barcode scanner consists of two main classes `CameraController` and `BarcodeCamera`.
 A full example looks like this:
 ```dart
-import 'package:fast_barcode_scanner/fast_barcode_scanner.dart';
+import 'package:icapps_fast_barcode_scanner/icapps_fast_barcode_scanner.dart';
 
 class MyScannerScreen extends StatelessWidget {
     @override
@@ -71,10 +73,12 @@ The `CameraController`-singleton manages the camera. It handles all the low leve
 method          |Description                                      
 ----------------|-------------------------------------------------
 `initialize`    | Initialized the scanner with the provided config          
-`pauseDetector` | Actively pauses the scanner                      
-`resumeDetector`| Resumes the scanner from the paused state       
+`pause` | Actively pauses the scanner                      
+`resume`| Resumes the scanner from the paused state       
 `toggleTorch`   | toggles the torch on and off                    
 `dispose`       | Stops and resets the camera on platform level   
+`changeCamera`  | Changes the camera to the other available camera
+`canChangeCamera`| Checks whether the camera can be changed
 
 You do not have to call `initialize` yourself, if you use the `BarcodeCamera` widget.
 

@@ -1,15 +1,15 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint fast_barcode_scanner.podspec' to validate before publishing.
+# Run `pod lib lint icapps_fast_barcode_scanner.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'fast_barcode_scanner'
+  s.name             = 'icapps_fast_barcode_scanner'
   s.version          = '0.0.1'
   s.summary          = 'A fast barcode scanner using ML Kit on Android and AVFoundation on iOS.'
   s.description      = <<-DESC
   A fast barcode scanner using ML Kit on Android and AVFoundation on iOS.
                        DESC
-  s.homepage         = 'https://github.com/jhoogstraat/fast_barcode_scanner'
+  s.homepage         = 'https://github.com/jhoogstraat/icapps_fast_barcode_scanner'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Joshua Hoogstraat' => 'https://github.com/jhoogstraat' }
   s.source           = { :path => '.' }

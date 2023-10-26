@@ -1,11 +1,11 @@
 PODS:
-  - fast_barcode_scanner (0.0.1):
+  - icapps_fast_barcode_scanner (0.0.1):
     - Flutter
   - Flutter (1.0.0)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
-  - fast_barcode_scanner (from `.symlinks/plugins/fast_barcode_scanner/ios`)
+  - icapps_fast_barcode_scanner (from `.symlinks/plugins/icapps_fast_barcode_scanner/ios`)
   - Flutter (from `Flutter`)
   - SwiftLint
 
@@ -14,13 +14,13 @@ SPEC REPOS:
     - SwiftLint
 
 EXTERNAL SOURCES:
-  fast_barcode_scanner:
-    :path: ".symlinks/plugins/fast_barcode_scanner/ios"
+  icapps_fast_barcode_scanner:
+    :path: ".symlinks/plugins/icapps_fast_barcode_scanner/ios"
   Flutter:
     :path: Flutter
 
 SPEC CHECKSUMS:
-  fast_barcode_scanner: 0df01447443e9f9c7a6859844d8c4719887100b4
+  icapps_fast_barcode_scanner: 0df01447443e9f9c7a6859844d8c4719887100b4
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
