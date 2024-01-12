@@ -1,30 +1,107 @@
-# Flutter Barcode Scanner Plugin
+# fast_barcode_scanner
 
-## Packages
+[![pub package](https://img.shields.io/pub/v/fast_barcode_scanner)](https://pub.dev/packages/fast_barcode_scanner)
 
-### fast_barcode_scanner:
-code for the cross-platform facing plugin, used to display a camera view within Flutter applications
+A fast barcode scanner using **MLKit** (and **CameraX**) on Android and **AVFoundation** on iOS. This package leaves the UI up to the user, but rather gives an access to a camera preview.
 
-[![pub package](https://img.shields.io/pub/v/fast_barcode_scanner.svg)](https://pub.dartlang.org/packages/fast_barcode_scanner)
+*Note*: This plugin is still under development, and some APIs might not be available yet. If you have any issues, ideas or recommendendations, don't hesitate to create an issue or pull request on github. I am using this plugin in production myself and will actively develop and maintain it going forward.
 
-### fast_barcode_scanner_platform_interface:
-code for the common platform interface
+**This plugin required iOS 10.0 and Android sdk version 21 or higher.**
 
-[![pub package](https://img.shields.io/pub/v/fast_barcode_scanner_platform_interface.svg)](https://pub.dartlang.org/packages/fast_barcode_scanner_platform_interface)
+## Installation
+Add the following line to your **pubspec.yaml**:
+```yaml
+fast_barcode_scanner: ^1.1.0
+```
+### iOS
+Add the `NSCameraUsageDescription` key to your `ios/Runner/Info.plist`, like so:
+```xml
+<key>NSCameraUsageDescription</key>
+<string>This app requires access to your phone’s camera solely for scanning barcodes</string>
+```
 
-Most developers are likely here as they are looking to use the fast_barcode_scanner plugin. There is a readme file within each directory with more information.
+### Android
+Change the minimum Android sdk version to 21 (or higher) in your `android/app/build.gradle` file.
+```
+minSdkVersion 21
+```
 
+## Usage
+The barcode scanner consists of two main classes `CameraController` and `BarcodeCamera`.
+A full example looks like this:
+```dart
+import 'package:fast_barcode_scanner/fast_barcode_scanner.dart';
 
-## Issues
+class MyScannerScreen extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(title: Text('Barcode Scanner')),
+            body: BarcodeCamera(
+                types: const [
+                    BarcodeType.ean8,
+                    BarcodeType.ean13,
+                    BarcodeType.code128
+                ],
+                resolution: Resolution.hd720,
+                framerate: Framerate.fps30,
+                mode: DetectionMode.pauseVideo,
+                onScan: (code) => print(code),
+                children: [
+                    MaterialPreviewOverlay(animateDetection: false),
+                    BlurPreviewOverlay(),
+                    Positioned(
+                      child: ElevatedButton(
+                        onPressed: () =>
+                            CameraController.instance.resumeDetector(),
+                        child: Text('Resume'),
+                      ),
+                    )
+                ],
+            )
+        )
+    }
+}
+```
+As you can see, there are two overlays in the childrens list. These two are included in the package. `MaterialPreviewOverlay` mimics the official [material barcode scanning example](https://material.io/design/machine-learning/barcode-scanning.html#usage). `BlurPreviewOverlay` blurs the screen when a barcode is detected and unblurs it on resuming. These are normal widget, which are shown above the camera preview. Look at their source code to find out, how to react to events from the barcode scanner.
 
-If you run into bugs, please raise them on the GitHub repository.
-Please do not email them to me, as GitHub is the appropriate place for them and allows for members of the community to answer questions, particularly if I miss the email.
+### CameraController
+The `CameraController`-singleton manages the camera. It handles all the low level stuff like communicating with native code. It is implemented as a singleton to guarantee that there is always one and the same controller managing the camera. You can access the controller via the `CameraController.instance` attribute. These are the accessible methods:
 
-It would also be much appreciated if issues could be limited to actual bugs or feature requests.
-If you're looking at how you could use the plugin to do a particular kind of notification, check the example app, which provides detailed code samples for each supported feature.
-Also try to check the READMEs first in case you have missed something e.g. platform-specific setup.
+method          |Description                                      
+----------------|-------------------------------------------------
+`initialize`    | Initialized the scanner with the provided config          
+`pauseDetector` | Actively pauses the scanner                      
+`resumeDetector`| Resumes the scanner from the paused state       
+`toggleTorch`   | toggles the torch on and off                    
+`dispose`       | Stops and resets the camera on platform level   
 
+You do not have to call `initialize` yourself, if you use the `BarcodeCamera` widget.
 
-## Contributions
+### CameraState
+`CameraController.instance.state` contains the current state of the scanner.
+You can use it to build your own overlay. The following information can be accessed:
 
-The guidelines around submitting pull requests can be found in  [CONTRIBUTING.md](CONTRIBUTING.md).
+Attribute | Description
+----------------|-------------------------------------------------
+`isInitialized` | Indicated whether the camera is currently initialized
+`previewConfig` | A `PreviewConfiguration` that is currently used
+`eventNotifier` | A event notifier to react to init or detecting codes
+`torchState`    | The current state of the torch (on/off)
+`hasError`      | Indicates whether `error` is null or not
+`error`         | Access the error produced last
+
+### BarcodeCamera
+The `BarcodeCamera` is a widget showing a preview of the camera feed. It calls the `CameraController` in the background for initialization and configuration of the barcode camera.
+
+An overview of all possible configurations (either passed to `BarcodeCamera` or `CameraController.initialize`):
+
+Attribute    |Description                                              
+-------------|---------------------------------------------------------
+`types`      | See code types to scan (see `BarcodeType`)              
+`mode`       | Whether to pause the camera on detection                          
+`resolution` | The resolution of the camera feed                        
+`framerate`  | The framerate of the camera feed                        
+`position`   | Choose between back and front camera (iOS)         
+`onScan`     | The callback when a barcode is scanned                  
+`children`   | Widgets to display on top of the preview
