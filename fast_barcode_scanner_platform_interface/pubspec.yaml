@@ -2,7 +2,7 @@ name: icapps_fast_barcode_scanner_platform_interface
 description: A common platform interface for the fast_barcode_scanner plugin.
 homepage: https://github.com/jhoogstraat/fast_barcode_scanner/tree/master/fast_barcode_scanner_platform_interface
 repository: https://github.com/jhoogstraat/fast_barcode_scanner
-version: 2.2.0
+version: 1.3.0
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
