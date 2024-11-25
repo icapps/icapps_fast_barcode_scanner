@@ -1,4 +1,4 @@
-## 2.1.0
+## 1.3.0
 
 - Forked to icapps_fast_barcode_scanner
 - fix 'Type mismatch: inferred type is Activity? but Context was expected'
