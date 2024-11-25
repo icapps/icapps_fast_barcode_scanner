@@ -1,4 +1,4 @@
-package com.jhoogstraat.fast_barcode_scanner
+package com.jhoogstraat.icapps_fast_barcode_scanner
 
 import android.Manifest
 import android.app.Activity
@@ -100,10 +100,10 @@ class BarcodeReader(private val flutterTextureEntry: TextureRegistry.SurfaceText
     }
 
     fun toggleTorch(result: Result) {
-        if (!isInitialized) return
+        if (!isInitialized || activity == null) return
         camera.cameraControl.enableTorch(camera.cameraInfo.torchState.value != TorchState.ON).addListener(Runnable {
             result.success(camera.cameraInfo.torchState.value == TorchState.ON)
-        }, ContextCompat.getMainExecutor(activity))
+        }, ContextCompat.getMainExecutor(activity!!))
     }
 
     fun canChangeCamera(result: Result) {
@@ -229,7 +229,7 @@ class BarcodeReader(private val flutterTextureEntry: TextureRegistry.SurfaceText
     }
 
     companion object {
-        private const val TAG = "fast_barcode_scanner"
+        private const val TAG = "icapps_fast_barcode_scanner"
         private const val REQUEST_CODE_PERMISSIONS = 10
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
     }
