@@ -22,7 +22,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.jhoogstraat.icapps_fast_barcode_scanner
+        package: com.icapps.icapps_fast_barcode_scanner
         pluginClass: FastBarcodeScannerPlugin
       ios:
         pluginClass: FastBarcodeScannerPlugin

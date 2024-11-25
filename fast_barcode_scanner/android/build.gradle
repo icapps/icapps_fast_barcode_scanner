@@ -1,4 +1,4 @@
-group 'com.jhoogstraat.icapps_fast_barcode_scanner'
+group 'com.icapps.icapps_fast_barcode_scanner'
 version '1.0-SNAPSHOT'
 
 buildscript {
