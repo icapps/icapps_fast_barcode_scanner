@@ -100,10 +100,10 @@ class BarcodeReader(private val flutterTextureEntry: TextureRegistry.SurfaceText
     }
 
     fun toggleTorch(result: Result) {
-        if (!isInitialized) return
+        if (!isInitialized || activity == null) return
         camera.cameraControl.enableTorch(camera.cameraInfo.torchState.value != TorchState.ON).addListener(Runnable {
             result.success(camera.cameraInfo.torchState.value == TorchState.ON)
-        }, ContextCompat.getMainExecutor(activity))
+        }, ContextCompat.getMainExecutor(activity!!))
     }
 
     fun canChangeCamera(result: Result) {
