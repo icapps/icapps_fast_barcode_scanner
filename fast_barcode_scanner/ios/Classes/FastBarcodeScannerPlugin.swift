@@ -49,7 +49,7 @@ public class FastBarcodeScannerPlugin: NSObject, FlutterPlugin {
 	}
 
 	public static func register(with registrar: FlutterPluginRegistrar) {
-		let channel = FlutterMethodChannel(name: "com.jhoogstraat/icapps_fast_barcode_scanner",
+		let channel = FlutterMethodChannel(name: "com.icapps/icapps_fast_barcode_scanner",
 																			 binaryMessenger: registrar.messenger())
 		let instance = FastBarcodeScannerPlugin(channel: channel, textureRegistry: registrar.textures())
 		registrar.addMethodCallDelegate(instance, channel: channel)
