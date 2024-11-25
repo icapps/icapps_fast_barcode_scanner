@@ -33,7 +33,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.jhoogstraat.fast_barcode_scanner_example"
+        applicationId "com.jhoogstraat.icapps_fast_barcode_scanner_example"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()

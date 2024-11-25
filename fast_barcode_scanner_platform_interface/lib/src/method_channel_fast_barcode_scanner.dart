@@ -10,7 +10,7 @@ import 'fast_barcode_scanner_platform_interface.dart';
 
 class MethodChannelFastBarcodeScanner extends FastBarcodeScannerPlatform {
   static const MethodChannel _channel =
-      MethodChannel('com.jhoogstraat/fast_barcode_scanner');
+      MethodChannel('com.jhoogstraat/icapps_fast_barcode_scanner');
 
   void Function(Barcode)? _onDetectHandler;
 

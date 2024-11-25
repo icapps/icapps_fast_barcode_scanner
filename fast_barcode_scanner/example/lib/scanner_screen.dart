@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:fast_barcode_scanner/fast_barcode_scanner.dart';
 import 'package:flutter/material.dart';
+import 'package:icapps_fast_barcode_scanner/icapps_fast_barcode_scanner.dart';
 
 import 'detections_counter.dart';
 

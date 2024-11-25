@@ -1,6 +1,6 @@
-import 'package:fast_barcode_scanner/src/camera_controller.dart';
-import 'package:fast_barcode_scanner_platform_interface/fast_barcode_scanner_platform_interface.dart';
+import 'package:icapps_fast_barcode_scanner/src/camera_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:icapps_fast_barcode_scanner_platform_interface/icapps_fast_barcode_scanner_platform_interface.dart';
 
 typedef ErrorCallback = Widget Function(BuildContext context, Object? error);
 

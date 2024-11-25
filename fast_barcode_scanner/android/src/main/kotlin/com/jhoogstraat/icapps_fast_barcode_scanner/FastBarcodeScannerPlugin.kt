@@ -1,4 +1,4 @@
-package com.jhoogstraat.fast_barcode_scanner
+package com.jhoogstraat.icapps_fast_barcode_scanner
 
 
 import androidx.annotation.NonNull
@@ -18,7 +18,7 @@ class FastBarcodeScannerPlugin: FlutterPlugin, MethodCallHandler, ActivityAware 
   private lateinit var reader: BarcodeReader
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.jhoogstraat/fast_barcode_scanner")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.jhoogstraat/icapps_fast_barcode_scanner")
 
     reader = BarcodeReader(flutterPluginBinding.textureRegistry.createSurfaceTexture()) { barcodes ->
       barcodes.firstOrNull()?.also { barcode -> channel.invokeMethod("read", listOf(barcodeStringMap[barcode.format], barcode.rawValue)) }
