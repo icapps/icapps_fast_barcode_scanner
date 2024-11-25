@@ -1,3 +1,8 @@
+## 2.1.0
+
+- Forked to icapps_fast_barcode_scanner
+- fix 'Type mismatch: inferred type is Activity? but Context was expected'
+
 ## 1.1.4
 
 - Fixes `pauseDetector` on iOS
