@@ -1,3 +1,7 @@
+## 1.4.1
+
+- Added namespace for android
+
 ## 1.4.0
 
 - Further rename to icapps_fast_barcode_scanner
