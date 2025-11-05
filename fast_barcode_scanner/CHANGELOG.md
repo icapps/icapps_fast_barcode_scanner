@@ -1,3 +1,8 @@
+
+## 1.5.0
+
+- Updated to be 16KB compatible
+
 ## 1.4.1
 
 - Added namespace for android
