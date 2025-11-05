@@ -13,7 +13,7 @@ import androidx.core.util.Consumer
 import androidx.lifecycle.LifecycleOwner
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.mlkit.vision.barcode.Barcode
+import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 
 import io.flutter.plugin.common.MethodChannel.Result
