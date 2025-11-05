@@ -1,9 +1,17 @@
 group 'com.icapps.icapps_fast_barcode_scanner'
 version '1.0-SNAPSHOT'
 
-plugins {
-    id "com.android.library"
-    id "org.jetbrains.kotlin.android"
+buildscript {
+    ext.kotlin_version = '1.9.24'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.5.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
 
 rootProject.allprojects {
@@ -12,6 +20,9 @@ rootProject.allprojects {
         mavenCentral()
     }
 }
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.icapps.icapps_fast_barcode_scanner'
@@ -41,6 +52,8 @@ android {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     def camerax_version = "1.4.0"
     def mlkit_version = "17.3.0"
     implementation "androidx.camera:camera-camera2:$camerax_version"
