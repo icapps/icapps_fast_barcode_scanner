@@ -1,4 +1,8 @@
 
+## 1.5.1
+
+- Fix crashes on android
+
 ## 1.5.0
 
 - Updated to be 16KB compatible
