@@ -82,7 +82,7 @@ enum DetectionMode: String {
 
 class BarcodeReader: NSObject {
 	let textureRegistry: FlutterTextureRegistry
-	var textureId: Int64!
+	var textureId: Int64?
 	var pixelBuffer: CVPixelBuffer?
 
 	var captureDevice: AVCaptureDevice!
@@ -186,11 +186,11 @@ class BarcodeReader: NSObject {
 	func start(fromPause: Bool) throws {
 		guard captureDevice != nil else { return }
 
-		captureSession.startRunning()
-
 		if !fromPause {
 			textureId = textureRegistry.register(self)
 		}
+
+		captureSession.startRunning()
 
 		if torchActiveOnStop {
 			do {
@@ -211,8 +211,11 @@ class BarcodeReader: NSObject {
 		captureSession.stopRunning()
 		if !pause {
 			pixelBuffer = nil
-			textureRegistry.unregisterTexture(textureId)
+			let id = textureId
 			textureId = nil
+			if let id = id {
+				textureRegistry.unregisterTexture(id)
+			}
 		}
 	}
 
@@ -317,6 +320,7 @@ extension BarcodeReader: AVCaptureVideoDataOutputSampleBufferDelegate {
 	                   didOutput sampleBuffer: CMSampleBuffer,
 	                   from _: AVCaptureConnection)
 	{
+		guard let textureId = textureId else { return }
 		pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
 		textureRegistry.textureFrameAvailable(textureId)
 	}
@@ -330,12 +334,14 @@ extension BarcodeReader: AVCaptureMetadataOutputObjectsDelegate {
 	{
 		guard
 			let metadata = metadataObjects.first,
-			let readableCode = metadata as? AVMetadataMachineReadableCodeObject
+			let readableCode = metadata as? AVMetadataMachineReadableCodeObject,
+			let type = flutterMetadataObjectTypes[readableCode.type],
+			let value = readableCode.stringValue
 		else { return }
 
 		pauseIfRequired()
 
-		codeCallback([flutterMetadataObjectTypes[readableCode.type]!, readableCode.stringValue!])
+		codeCallback([type, value])
 	}
 }
 

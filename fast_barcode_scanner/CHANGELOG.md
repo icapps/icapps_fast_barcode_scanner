@@ -1,4 +1,9 @@
 
+## 1.5.2
+
+- Fixed iOS crash when a camera frame arrived while the scanner was stopping
+- Fixed a crash when an unknown barcode type or empty value was detected
+
 ## 1.5.1
 
 - Fix crashes on android
